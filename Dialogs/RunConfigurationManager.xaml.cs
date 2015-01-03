@@ -98,17 +98,14 @@ namespace BefunWrite.Dialogs
 			//########
 
 			V_EX_IsDebug.IsChecked = o.ExecSettings.IsDebug;
+			V_EX_EnableUndo.IsChecked = o.ExecSettings.EnableUndo;
 			V_EX_StartPaused.IsChecked = o.ExecSettings.startPaused;
 			V_EX_SyntaxHighlighting.SelectedIndex = ((int)o.ExecSettings.syntaxHighlight) % V_EX_SyntaxHighlighting.Items.Count; // Modulo for safety
 			V_EX_ASCIIStack.IsChecked = o.ExecSettings.asciistack;
+			V_EX_ReverseStack.IsChecked = o.ExecSettings.ReverseStack;
 			V_EX_FollowCursorMode.IsChecked = o.ExecSettings.follocursormode;
 			V_EX_SkipNOP.IsChecked = o.ExecSettings.skipnop;
 			V_EX_InitialSpeedIndex.Value = o.ExecSettings.initialSpeedIndex;
-			V_EX_Speed_1.Value = o.ExecSettings.simuSpeeds[0];
-			V_EX_Speed_2.Value = o.ExecSettings.simuSpeeds[1];
-			V_EX_Speed_3.Value = o.ExecSettings.simuSpeeds[2];
-			V_EX_Speed_4.Value = o.ExecSettings.simuSpeeds[3];
-			V_EX_Speed_5.Value = o.ExecSettings.simuSpeeds[4];
 			V_EX_DoDecay.IsChecked = o.ExecSettings.dodecay;
 			V_EX_DecayTime.Value = o.ExecSettings.decaytime;
 			V_EX_ZoomToDisplay.IsChecked = o.ExecSettings.zoomToDisplay;
@@ -166,17 +163,14 @@ namespace BefunWrite.Dialogs
 			//########
 
 			o.ExecSettings.IsDebug = V_EX_IsDebug.IsChecked.Value;
+			o.ExecSettings.EnableUndo = V_EX_EnableUndo.IsChecked.Value;
 			o.ExecSettings.startPaused = V_EX_StartPaused.IsChecked.Value;
 			o.ExecSettings.syntaxHighlight = (SH_Mode)V_EX_SyntaxHighlighting.SelectedIndex;
 			o.ExecSettings.asciistack = V_EX_ASCIIStack.IsChecked.Value;
+			o.ExecSettings.ReverseStack = V_EX_ReverseStack.IsChecked.Value;
 			o.ExecSettings.follocursormode = V_EX_FollowCursorMode.IsChecked.Value;
 			o.ExecSettings.skipnop = V_EX_SkipNOP.IsChecked.Value;
 			o.ExecSettings.initialSpeedIndex = V_EX_InitialSpeedIndex.Value.Value;
-			o.ExecSettings.simuSpeeds[0] = V_EX_Speed_1.Value.Value;
-			o.ExecSettings.simuSpeeds[1] = V_EX_Speed_2.Value.Value;
-			o.ExecSettings.simuSpeeds[2] = V_EX_Speed_3.Value.Value;
-			o.ExecSettings.simuSpeeds[3] = V_EX_Speed_4.Value.Value;
-			o.ExecSettings.simuSpeeds[4] = V_EX_Speed_5.Value.Value;
 			o.ExecSettings.dodecay = V_EX_DoDecay.IsChecked.Value;
 			o.ExecSettings.decaytime = V_EX_DecayTime.Value.Value;
 			o.ExecSettings.zoomToDisplay = V_EX_ZoomToDisplay.IsChecked.Value;

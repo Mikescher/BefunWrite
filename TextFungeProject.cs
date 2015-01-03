@@ -23,9 +23,10 @@ namespace BefunWrite
 		public bool follocursormode;
 		public bool skipnop;
 		public bool IsDebug;
+		public bool EnableUndo;
+		public bool ReverseStack;
 
 		public int initialSpeedIndex;
-		public int[] simuSpeeds = new int[5];
 
 		public int decaytime;
 		public bool dodecay;
@@ -41,16 +42,10 @@ namespace BefunWrite
 				follocursormode = false,
 				skipnop = true,
 				IsDebug = true,
+				EnableUndo = true,
+				ReverseStack = false,
 
 				initialSpeedIndex = 3,
-				simuSpeeds = new int[5]
-				{
-					RunOptions.SLEEP_TIME_1,
-					RunOptions.SLEEP_TIME_2,
-					RunOptions.SLEEP_TIME_3,
-					RunOptions.SLEEP_TIME_4,
-					RunOptions.SLEEP_TIME_5,
-				},
 
 				decaytime = RunOptions.DECAY_TIME,
 				dodecay = true,
@@ -68,16 +63,10 @@ namespace BefunWrite
 				follocursormode = false,
 				skipnop = true,
 				IsDebug = false,
+				EnableUndo = false,
+				ReverseStack = false,
 
 				initialSpeedIndex = 5,
-				simuSpeeds = new int[5]
-				{
-					RunOptions.SLEEP_TIME_1,
-					RunOptions.SLEEP_TIME_2,
-					RunOptions.SLEEP_TIME_3,
-					RunOptions.SLEEP_TIME_4,
-					RunOptions.SLEEP_TIME_5,
-				},
 
 				decaytime = RunOptions.DECAY_TIME,
 				dodecay = false,

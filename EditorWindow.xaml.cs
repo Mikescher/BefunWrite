@@ -386,6 +386,16 @@ namespace BefunWrite
 					break;
 			}
 
+			if (project.SelectedConfig.ExecSettings.EnableUndo)
+				start.Arguments += "-undo" + " ";
+			else
+				start.Arguments += "-no_undo" + " ";
+
+			if (project.SelectedConfig.ExecSettings.ReverseStack)
+				start.Arguments += "-revstack" + " ";
+			else
+				start.Arguments += "-normstack" + " ";
+
 			if (project.SelectedConfig.ExecSettings.asciistack)
 				start.Arguments += "-asciistack" + " ";
 			else
@@ -402,12 +412,6 @@ namespace BefunWrite
 				start.Arguments += "-no_skipnop" + " ";
 
 			start.Arguments += "-speed=" + project.SelectedConfig.ExecSettings.initialSpeedIndex + " ";
-
-			start.Arguments += "-speed_1=" + project.SelectedConfig.ExecSettings.simuSpeeds[0] + " ";
-			start.Arguments += "-speed_2=" + project.SelectedConfig.ExecSettings.simuSpeeds[1] + " ";
-			start.Arguments += "-speed_3=" + project.SelectedConfig.ExecSettings.simuSpeeds[2] + " ";
-			start.Arguments += "-speed_4=" + project.SelectedConfig.ExecSettings.simuSpeeds[3] + " ";
-			start.Arguments += "-speed_5=" + project.SelectedConfig.ExecSettings.simuSpeeds[4] + " ";
 
 			start.Arguments += "-decay=" + project.SelectedConfig.ExecSettings.decaytime + " ";
 

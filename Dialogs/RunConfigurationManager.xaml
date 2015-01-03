@@ -43,6 +43,9 @@
                         <ctrls:TwoColumnGrid RowSpacing="5" ColumnSpacing="5">
                             <Label Content="Debugging enabled" />
                             <CheckBox x:Name="V_EX_IsDebug" VerticalAlignment="Center"/>
+
+                            <Label Content="Undo enabled" />
+                            <CheckBox x:Name="V_EX_EnableUndo" VerticalAlignment="Center"/>
                             
                             <Label Content="Start paused" />
                             <CheckBox x:Name="V_EX_StartPaused" VerticalAlignment="Center"/>
@@ -58,6 +61,9 @@
                             <Label Content="Show entries in stack as ASCII" />
                             <CheckBox x:Name="V_EX_ASCIIStack" VerticalAlignment="Center"/>
 
+                            <Label Content="Show stack in reverse order" />
+                            <CheckBox x:Name="V_EX_ReverseStack" VerticalAlignment="Center"/>
+
                             <Label Content="Automatically follow the PC" />
                             <CheckBox x:Name="V_EX_FollowCursorMode" VerticalAlignment="Center"/>
 
@@ -65,22 +71,7 @@
                             <CheckBox x:Name="V_EX_SkipNOP" VerticalAlignment="Center"/>
 
                             <Label Content="Initial speed setting" />
-                            <xctk:IntegerUpDown x:Name="V_EX_InitialSpeedIndex" VerticalAlignment="Center" Minimum="1" Maximum="5" Value="0"/>
-
-                            <Label Content="Speed[1] (in ms)" />
-                            <xctk:IntegerUpDown x:Name="V_EX_Speed_1" VerticalAlignment="Center" Minimum="0" Maximum="100000" Value="0"/>
-
-                            <Label Content="Speed[2] (in ms)" />
-                            <xctk:IntegerUpDown x:Name="V_EX_Speed_2" VerticalAlignment="Center" Minimum="0" Maximum="100000" Value="0"/>
-
-                            <Label Content="Speed[3] (in ms)" />
-                            <xctk:IntegerUpDown x:Name="V_EX_Speed_3" VerticalAlignment="Center" Minimum="0" Maximum="100000" Value="0"/>
-
-                            <Label Content="Speed[4] (in ms)" />
-                            <xctk:IntegerUpDown x:Name="V_EX_Speed_4" VerticalAlignment="Center" Minimum="0" Maximum="100000" Value="0"/>
-
-                            <Label Content="Speed[5] (in ms)" />
-                            <xctk:IntegerUpDown x:Name="V_EX_Speed_5" VerticalAlignment="Center" Minimum="0" Maximum="100000" Value="0"/>
+                            <xctk:IntegerUpDown x:Name="V_EX_InitialSpeedIndex" VerticalAlignment="Center" Minimum="0" Maximum="15" Value="0"/>
 
                             <Label Content="Show tail" />
                             <CheckBox x:Name="V_EX_DoDecay" VerticalAlignment="Center"/>
