@@ -164,8 +164,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="example.tf" />
+    <None Include="LICENSE" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -212,9 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\exclamation-diamond-frame.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="license.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons\icon.png" />
