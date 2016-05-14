@@ -106,6 +106,7 @@
       <DependentUpon>RunConfigurationManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\DirectoryHelper.cs" />
+    <Compile Include="Helper\LinqHelper.cs" />
     <Compile Include="Helper\MathHelper.cs" />
     <Compile Include="TextFungeProject.cs" />
     <Compile Include="TextFungeProjectWrapper.cs" />

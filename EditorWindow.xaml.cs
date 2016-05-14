@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -530,8 +531,14 @@ namespace BefunWrite
 			project.Sourcecode = codeEditor.Text;
 			project.DirtySourcecode();
 
-			updateUI();
+			string inlineDisplay = TextFungeParser.ExtractDisplayFromTFFormat(project.Sourcecode);
+			if (inlineDisplay != string.Empty && project.DisplayValue != inlineDisplay)
+			{
+				project.DisplayValue = inlineDisplay;
+				project.DirtyDisplayValue();
+			}
 
+			updateUI();
 		}
 
 		private void displayEditor_TextChanged(object sender, EventArgs e)
@@ -618,6 +625,10 @@ namespace BefunWrite
 
 		private string getTSDisplay()
 		{
+			var code = getTSCode();
+			var inlineDisplay = TextFungeParser.ExtractDisplayFromTFFormat(code);
+			if (inlineDisplay != string.Empty) return inlineDisplay;
+
 			string t = "<>";
 			System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate { t = displayEditor.Text; });
 			return t;
@@ -673,8 +684,19 @@ namespace BefunWrite
 					{
 						txtErrorList.Text = error.getWellFormattedString();
 
-						IconBar_Code.SetError(-1, "");
-						IconBar_Display.SetError(1, error.ToPopupString());
+						string[] lines = Regex.Split(project.Sourcecode, @"\r?\n");
+						int displayIndex = lines.FindIndex(p => p.Trim().StartsWith("///<DISPLAY>"));
+
+						if (displayIndex == -1)
+						{
+							IconBar_Code.SetError(-1, "");
+							IconBar_Display.SetError(1, error.ToPopupString());
+						}
+						else
+						{
+							IconBar_Code.SetError(displayIndex + 1, error.ToPopupString());
+							IconBar_Display.SetError(-1, "");
+						}
 
 						hasErrors = true;
 					});
@@ -857,7 +879,13 @@ namespace BefunWrite
 			{
 				ASTObject.CGO = project.SelectedConfig.Options;
 
-				code = Parser.generateCode(codeEditor.Text, displayEditor.Text, project.SelectedConfig.ExecSettings.IsDebug);
+				string inlineDisplay = TextFungeParser.ExtractDisplayFromTFFormat(project.Sourcecode);
+
+				var display = inlineDisplay;
+				if (display == string.Empty)
+					display = displayEditor.Text;
+
+				code = Parser.generateCode(project.Sourcecode, display, project.SelectedConfig.ExecSettings.IsDebug);
 			}
 			catch (BefunGenException ex)
 			{
