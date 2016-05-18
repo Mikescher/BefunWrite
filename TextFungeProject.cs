@@ -34,7 +34,7 @@ namespace BefunWrite
 
 		public static BefunExecSettings getBES_Debug()
 		{
-			return new BefunExecSettings()
+			return new BefunExecSettings
 			{
 				startPaused = true,
 				syntaxHighlight = SH_Mode.AUTOMATIC,
@@ -45,7 +45,7 @@ namespace BefunWrite
 				EnableUndo = true,
 				ReverseStack = false,
 
-				initialSpeedIndex = 3,
+				initialSpeedIndex = 6,
 
 				decaytime = RunOptions.DECAY_TIME,
 				dodecay = true,
@@ -55,7 +55,7 @@ namespace BefunWrite
 
 		public static BefunExecSettings getBES_Release()
 		{
-			return new BefunExecSettings()
+			return new BefunExecSettings
 			{
 				startPaused = false,
 				syntaxHighlight = SH_Mode.AUTOMATIC,
@@ -66,10 +66,10 @@ namespace BefunWrite
 				EnableUndo = false,
 				ReverseStack = false,
 
-				initialSpeedIndex = 5,
+				initialSpeedIndex = 15,
 
 				decaytime = RunOptions.DECAY_TIME,
-				dodecay = false,
+				dodecay = true,
 				zoomToDisplay = false,
 			};
 		}
