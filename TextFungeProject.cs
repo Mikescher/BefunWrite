@@ -1,5 +1,4 @@
-﻿using BefunExec.Logic;
-using BefunGen.AST.CodeGen;
+﻿using BefunGen.AST.CodeGen;
 using System.Collections.Generic;
 
 namespace BefunWrite
@@ -47,7 +46,7 @@ namespace BefunWrite
 
 				initialSpeedIndex = 6,
 
-				decaytime = RunOptions.DECAY_TIME,
+				decaytime = 500, // BefunExec.Logic.RunOptions.DECAY_TIME
 				dodecay = true,
 				zoomToDisplay = false,
 			};
@@ -68,7 +67,7 @@ namespace BefunWrite
 
 				initialSpeedIndex = 15,
 
-				decaytime = RunOptions.DECAY_TIME,
+				decaytime = 500, // BefunExec.Logic.RunOptions.DECAY_TIME
 				dodecay = true,
 				zoomToDisplay = false,
 			};
