@@ -329,7 +329,7 @@ namespace BefunWrite
 			{
 				ASTObject.CGO = project.SelectedConfig.Options;
 
-				code = Parser.generateCode(codeEditor.Text, displayEditor.Text, project.SelectedConfig.ExecSettings.IsDebug, out prog, out cpiece);
+				code = Parser.GenerateCode(codeEditor.Text, displayEditor.Text, project.SelectedConfig.ExecSettings.IsDebug, out prog, out cpiece);
 			}
 			catch (BefunGenException ex)
 			{
@@ -423,8 +423,8 @@ namespace BefunWrite
 
 			if (project.SelectedConfig.ExecSettings.zoomToDisplay && prog.HasDisplay)
 			{
-				TagLocation tagloc = cpiece.findTagSingle(typeof(Display_TopLeft_Tag));
-				Display_TopLeft_Tag tag = tagloc.Tag as Display_TopLeft_Tag;
+				TagLocation tagloc = cpiece.FindTagSingle(typeof(DisplayTopLeftTag));
+				DisplayTopLeftTag tag = tagloc.Tag as DisplayTopLeftTag;
 
 				start.Arguments += "-zoom=" + tagloc.X + "," + tagloc.Y + "," + (tagloc.X + tag.Width) + "," + (tagloc.Y + tag.Height) + " ";
 			}
@@ -682,7 +682,7 @@ namespace BefunWrite
 				{
 					System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate
 					{
-						txtErrorList.Text = error.getWellFormattedString();
+						txtErrorList.Text = error.GetWellFormattedString();
 
 						string[] lines = Regex.Split(project.Sourcecode, @"\r?\n");
 						int displayIndex = lines.FindIndex(p => p.Trim().StartsWith("///<DISPLAY>"));
@@ -705,7 +705,7 @@ namespace BefunWrite
 				{
 					System.Windows.Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate
 					{
-						txtErrorList.Text = error.getWellFormattedString();
+						txtErrorList.Text = error.GetWellFormattedString();
 
 						IconBar_Code.SetError(error.Position.Line, error.ToPopupString());
 						IconBar_Display.SetError(-1, "");
@@ -741,7 +741,7 @@ namespace BefunWrite
 			}
 			else
 			{
-				root = new ClickableTreeViewItem(IconBar_Code, p.getWellFormattedHeader(), null, true);
+				root = new ClickableTreeViewItem(IconBar_Code, p.GetWellFormattedHeader(), null, true);
 
 				if (p.Variables.Count > 0)
 				{
@@ -751,7 +751,7 @@ namespace BefunWrite
 					{
 						foreach (VarDeclaration v in p.Variables)
 						{
-							globVars.Items.Add(new ClickableTreeViewItem(IconBar_Code, v.getWellFormattedDecalaration(), v.Position, true));
+							globVars.Items.Add(new ClickableTreeViewItem(IconBar_Code, v.GetWellFormattedDecalaration(), v.Position, true));
 						}
 					}
 					root.Items.Add(globVars);
@@ -763,7 +763,7 @@ namespace BefunWrite
 					{
 						foreach (VarDeclaration v in p.Constants)
 						{
-							constants.Items.Add(new ClickableTreeViewItem(IconBar_Code, String.Format("{0} = {1}", v.getWellFormattedDecalaration(), v.Initial.getDebugString()), v.Position, true));
+							constants.Items.Add(new ClickableTreeViewItem(IconBar_Code, String.Format("{0} = {1}", v.GetWellFormattedDecalaration(), v.Initial.GetDebugString()), v.Position, true));
 						}
 					}
 					root.Items.Add(constants);
@@ -773,7 +773,7 @@ namespace BefunWrite
 				{
 					foreach (Method v in p.MethodList)
 					{
-						ClickableTreeViewItem meth = new ClickableTreeViewItem(IconBar_Code, v.getWellFormattedHeader(), v == p.MainMethod ? p.Position : v.Position, false);
+						ClickableTreeViewItem meth = new ClickableTreeViewItem(IconBar_Code, v.GetWellFormattedHeader(), v == p.MainMethod ? p.Position : v.Position, false);
 						{
 							List<VarDeclaration> vars = v.Variables.Where(pp => !v.Parameter.Contains(pp)).ToList();
 
@@ -783,7 +783,7 @@ namespace BefunWrite
 								{
 									foreach (VarDeclaration vv in vars)
 									{
-										varitem.Items.Add(new ClickableTreeViewItem(IconBar_Code, vv.getWellFormattedDecalaration(), vv.Position, true));
+										varitem.Items.Add(new ClickableTreeViewItem(IconBar_Code, vv.GetWellFormattedDecalaration(), vv.Position, true));
 									}
 								}
 								meth.Items.Add(varitem);
@@ -885,7 +885,7 @@ namespace BefunWrite
 				if (display == string.Empty)
 					display = displayEditor.Text;
 
-				code = Parser.generateCode(project.Sourcecode, display, project.SelectedConfig.ExecSettings.IsDebug);
+				code = Parser.GenerateCode(project.Sourcecode, display, project.SelectedConfig.ExecSettings.IsDebug);
 			}
 			catch (BefunGenException ex)
 			{
