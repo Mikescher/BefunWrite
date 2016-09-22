@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/Mikescher/BefunUtils/master/README-FILES/icon_BefunWrite.png) BefunWrite
+![](https://raw.githubusercontent.com/Mikescher/BefunUtils/master/README-FILES/icon_BefunWrite.png) BefunWrite  [![Build status](https://ci.appveyor.com/api/projects/status/wriqnc42kc8cwosu/branch/master?svg=true)](https://ci.appveyor.com/project/Mikescher/befunwrite/branch/master)
 ==========
 
 BefunWrite is an IDE in which you can write a program in *TextFunge*, and compile it to valid Befunge-98 code.
@@ -35,6 +35,8 @@ Download
 
 You can download the binaries from my website [www.mikescher.com](http://www.mikescher.com/programs/view/BefunUtils)
 
+Or you can download the latest (nightly) version from the **[AppVeyor build server](https://ci.appveyor.com/project/Mikescher/BefunExec/build/artifacts)**
+
 Set Up
 ======
 
@@ -42,3 +44,9 @@ Set Up
 
 You need the other [BefunUtils](https://github.com/Mikescher/BefunUtils) projects to run this (Especially BefunExec and BefunGen).  
 Follow the setup instructions from BefunUtils: [README](https://github.com/Mikescher/BefunUtils/blob/master/README.md)
+
+
+Contributions
+=============
+
+Yes, please
